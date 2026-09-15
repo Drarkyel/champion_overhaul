@@ -1,0 +1,77 @@
+<metadata>
+	<name>champion_overhaul</name>
+	<directory>champion_overhaul</directory>
+	<description>[h1]Requires Repentogon+![/h1]
+
+[b]Champion Overhaul[/b] completely redesigns how [u]enemy[/u] Champions work in Repentance+. The goal is to give Champions more personality, variety, and mechanical depth while expanding the system beyond the vanilla game.
+
+[h2] ⚙️ System Redesign [/h2]
+
+All enemy Champions have been redesigned, including their:
+
+[list]
+[*][b]Mechanics[/b]
+[*][b]Drops[/b]
+[*][b]Rarities[/b]
+[*][b]Spawn conditions[/b]
+[*][b]Attack patterns[/b]
+[/list]
+
+Vanilla Champions have been reworked to give their effects more identity, while the system also allows completely new Champions to be introduced. Champions retain the same size as their normal counterparts, but are significantly more dangerous:
+
+[list]
+[*][b]2× base health[/b]
+[*][b]1 full heart of contact damage[/b]
+[*][b]2 full hearts of contact damage in Chapter 4+[/b]
+[/list]
+
+Damage changes also apply to Boss Champions.
+
+[h2] 🎨 Color Consistency [/h2]
+
+Champion colors have been improved using the [b]Repentance shader system[/b].
+
+Instead of simply tinting the entity's sprite, Champion colors are injected through shaders. The pipeline is reworked to allow bright colors, providing a more consistent and accurate appearance across different entities and animations. This removes some of the shading layers from the process, but results in more concise coloring.
+
+[h2] 🧬 Inheritance [/h2]
+
+Champion properties are no longer limited to the Champion itself. Color and damage are inherited by its attacks and related entities. Depending on the Champion, you may encounter:
+
+[list]
+[*]Colorized [b]projectiles[/b]
+[*]Colorized [b]lasers[/b]
+[*]Modified [b]effects[/b]
+[*]Champion-specific attack behaviors
+[*]Attacks that inherit the Champion's damage
+[/list]
+
+This means a Champion's identity can extend beyond its body and into its entire attack pattern. Champion bosses share this feature too.
+
+[h2] ⚔️ Ambush [/h2]
+
+Champions can now appear as part of [b]enemy waves[/b]. They are able to spawn in situations such as:
+
+[list]
+[*]Challenge Rooms
+[*]Boss Rooms
+[*]Wave-based encounters
+[*]Other rooms using wave-like enemy layouts
+[/list]
+
+This allows Champions to appear in more unexpected situations instead of being restricted to standard enemy spawns.
+
+[h2] 🔧 Compatibility Layer [/h2]
+
+Champion Overhaul is designed with compatibility in mind. Sprite changes and new entities work fine. Entities that can become Champions must have a dedicated Champion sprite variant, similar to how Repentance handles Champion sprites. If an entity does not provide the required Champion sprite variant, its base Champion color may not be applied correctly.
+
+[h2] 🔗 Technical Information [/h2]
+
+There are also changes regarding some annoying entity mechanics and Ultra Hard Challenge. For more information and technical details, visit the project's GitHub repository:
+
+[url=http://www.github.com/drarkyel/champion_overhaul] Champion Overhaul [/url]
+
+A dedicated page documenting both vanilla and modded Champions is currently being developed, which will take at least a few days. Until then, have fun discovering the new variations!</description>
+	<version>1.0</version>
+	<visibility/>
+</metadata>
+

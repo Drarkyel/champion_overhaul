@@ -1,0 +1,5 @@
+# Ignores visual studio code settings
+.vscode
+
+# Ignores lua language server configuration
+.luarc.json
