@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
-	<name>champion_overhaul</name>
-	<directory>champion_overhaul</directory>
-	<description>[h1]Requires Repentogon+![/h1]
+    <name>Champion Overhaul</name>
+    <directory>champion_overhaul</directory>
+    <id>3802366361</id>
+    <description>[h1]Requires Repentogon+![/h1]
 
 [b]Champion Overhaul[/b] completely redesigns how [u]enemy[/u] Champions work in Repentance+. The goal is to give Champions more personality, variety, and mechanical depth while expanding the system beyond the vanilla game.
 
@@ -71,7 +73,10 @@ There are also changes regarding some annoying entity mechanics and Ultra Hard C
 [url=http://www.github.com/drarkyel/champion_overhaul] Champion Overhaul [/url]
 
 A dedicated page documenting both vanilla and modded Champions is currently being developed, which will take at least a few days. Until then, have fun discovering the new variations!</description>
-	<version>1.0</version>
-	<visibility/>
+    <version>1.1</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+    <tag id="Enemies"/>
+    <tag id="Tweaks"/>
+    <tag id="Shaders"/>
 </metadata>
-
