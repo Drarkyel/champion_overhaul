@@ -2,7 +2,7 @@
 
 # Champion Overhaul
 
-**Champion Overhaul** completely redesigns how enemy Champions work in Repentance+. The goal is to give Champions more personality, variety, and mechanical depth while expanding the system beyond the vanilla game. **A dedicated page documenting both vanilla and modded Champions is currently being developed**.
+**Champion Overhaul** completely redesigns how enemy Champions work in Repentance+. The goal is to give Champions more personality, variety, and mechanical depth while expanding the system beyond the vanilla game. The list of vanilla/modded champions can be found in the wiki: [Champion List](https://github.com/Drarkyel/champion_overhaul/wiki/Champion-List/) 
 
 ## ⚙️ System Redesign
 

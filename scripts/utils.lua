@@ -292,7 +292,7 @@ function ChampionOverhaul:SetChampionColor(entity)
 
         if xmlData then
             -- Try suffix first
-            do
+            if xmlData.suffix then
                 local suffix = xmlData.suffix:match("_([^_]+)$")
                 if suffix and self.BOSS_COLOR[suffix] then
                     color = self.BOSS_COLOR[suffix]
@@ -303,7 +303,6 @@ function ChampionOverhaul:SetChampionColor(entity)
             -- Try ANM2 filename
             if not color and xmlData.anm2path then
                 local suffix = xmlData.anm2path:match("_([^_]+)%.anm2$")
-
                 if suffix and self.BOSS_COLOR[suffix] then
                     color = self.BOSS_COLOR[suffix]
                     intensity = true
@@ -455,6 +454,15 @@ end
 function ChampionOverhaul:IsStationary(entity)
     for _, type_ in ipairs(self.STATIONARY_ENTITIES) do
         if type_ == entity.Type then return true end
+    end
+    return false
+end
+
+-- Is critter entity effect
+---@param effect EntityEffect
+function ChampionOverhaul:IsCritter(effect)
+    for _, variant in ipairs(self.CRITTERS) do
+        if variant == effect.Variant then return true end
     end
     return false
 end

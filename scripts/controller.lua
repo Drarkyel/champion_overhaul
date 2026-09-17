@@ -95,7 +95,8 @@ function mod:ChampionEffect(effect)
         end
     end
 
-    if effect.IsFollowing then return end
+    local invalid = effect.IsFollowing or self:IsCritter(effect)
+    if invalid then return end
 
     self:SetChampionColor(effect)
 end

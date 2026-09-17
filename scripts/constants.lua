@@ -46,16 +46,29 @@ ChampionOverhaul.COLOR_MODIFIER = {
 -- Boss champion colors
 ---@type table<string, Color>
 ChampionOverhaul.BOSS_COLOR = {
-    green = Color(0.25, 1, 0.25),
-    blue = Color(0.25, 0.25, 1),
+    green = Color(0.25, 0.75, 0.25),
+    blue = Color(0.45, 0.45, 1),
     black = Color(0.35, 0.35, 0.35),
     yellow = Color(0.75, 0.75, 0.0),
     red = Color(1, 0.25, 0.25),
     grey = Color(0.5, 0.5, 0.5),
-    orange = Color(-0.8, -0.5, 0),
+    orange = Color(-0.8, -0.4, 0),
     pink = Color(1, 0.3, 0.7),
     cyan = Color(0, 0.65, 0.65),
     brown = Color(0.7, 0.4, 0.1)
+}
+
+-- Critters
+ChampionOverhaul.CRITTERS = {
+    EffectVariant.TINY_BUG,
+    EffectVariant.TINY_FLY,
+    EffectVariant.WORM,
+    EffectVariant.BEETLE,
+    EffectVariant.WISP,
+    EffectVariant.WALL_BUG,
+    EffectVariant.BUTTERFLY,
+    EffectVariant.TADPOLE,
+    EffectVariant.LIL_GHOST
 }
 
 -- List of entities unable to move cardinally by default

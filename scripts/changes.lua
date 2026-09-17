@@ -33,7 +33,7 @@ mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.BoilRegen, EntityType.ENTITY_BOI
 -- Daddy long legs
 ---@param npc EntityNPC
 function mod:DaddyLongLegsSpeed(npc)
-    npc.Velocity = npc.Velocity * 0.85
+    npc.Velocity = npc.Velocity * 0.9
 end
 mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.DaddyLongLegsSpeed, EntityType.ENTITY_BABY_LONG_LEGS)
 
