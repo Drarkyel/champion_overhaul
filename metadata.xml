@@ -19,7 +19,7 @@ All enemy Champions have been redesigned, including their:
 [*][b]Attack patterns[/b]
 [/list]
 
-Vanilla Champions have been reworked to give their effects more identity, while the system also allows completely new Champions to be introduced. Champions retain the same size as their normal counterparts, but are significantly more dangerous:
+Vanilla Champions have been reworked to give their effects more identity, while also doubling champion variety. Champions retain the same size as their normal counterparts, but are significantly more dangerous:
 
 [list]
 [*][b]2× base health[/b]
@@ -64,7 +64,7 @@ This allows Champions to appear in more unexpected situations instead of being r
 
 [h2] 🔧 Compatibility Layer [/h2]
 
-Champion Overhaul is designed with compatibility in mind. Sprite changes and new entities work fine. Entities that can become Champions must have a dedicated Champion sprite variant, similar to how Repentance handles Champion sprites. If an entity does not provide the required Champion sprite variant, its base Champion color may not be applied correctly.
+Most mods are going to work fine, including sprite changes and new entities. If it seems like there is a problem with a specific mod, let me know in the comments.
 
 [h2] 🔗 Technical Information [/h2]
 
@@ -72,8 +72,10 @@ There are also changes regarding some annoying entity mechanics and Ultra Hard C
 
 [url=http://www.github.com/drarkyel/champion_overhaul] Champion Overhaul [/url]
 
-A dedicated page documenting both vanilla and modded Champions is currently being developed, which will take at least a few days. Until then, have fun discovering the new variations!</description>
-    <version>1.1</version>
+For checking the changes about vanilla champions and the new ones:
+
+[url=http://www.github.com/Drarkyel/champion_overhaul/wiki/Champion-List] Champion List [/url]</description>
+    <version>1.2</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
     <tag id="Enemies"/>

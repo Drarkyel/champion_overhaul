@@ -13,14 +13,31 @@ ChampionOverhaul:Register({
     entityFlags = flags
 })
 
+local DAMAGE_DELAY = 10
 local KNOCKBACK_STRENGTH = 20
 local PLAYER_DISTANCE = 120
+
+-- Damage delay
+---@param npc EntityNPC
+function mod:IndigoDamageDelay(npc)
+    if not self:GetChampion(npc, CHAMPION) then return end
+    if not npc:GetData().co_champion_indigo_delay then return end
+
+    if npc:GetData().co_champion_indigo_delay < DAMAGE_DELAY then
+        npc:GetData().co_champion_indigo_delay = npc:GetData().co_champion_indigo_delay + 1
+        return
+    end
+
+    npc:GetData().co_champion_indigo_delay = nil
+end
+mod:AddCallback(ModCallbacks.MC_NPC_UPDATE, mod.IndigoDamageDelay)
 
 -- Push mechanic
 ---@param entity Entity
 ---@param amount number
 function mod:IndigoKnockback(entity, amount)
     if not self:GetChampion(entity, CHAMPION) then return end
+    if entity:GetData().co_champion_indigo_delay then return end
     if amount <= 0 then return end
 
     local npc = entity:ToNPC()
@@ -29,10 +46,11 @@ function mod:IndigoKnockback(entity, amount)
     local target = npc:GetPlayerTarget()
     if not target then return end
 
+    entity:GetData().co_champion_indigo_delay = 0
+    npc:PlaySound(SoundEffect.SOUND_CLAP, 1, 2, false, 0.5)
+
     -- Nerf strength for weak damage
     local strength = (amount > 1.5) and KNOCKBACK_STRENGTH or KNOCKBACK_STRENGTH / 2
-
-    npc:PlaySound(SoundEffect.SOUND_CLAP, 1, 2, false, 0.5)
 
     if self:IsStationary(entity) then
         -- Pushes the player away from the champion

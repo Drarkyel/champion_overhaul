@@ -61,6 +61,14 @@ function ChampionOverhaul:SetChampion(entity, id)
     local npc = entity:ToNPC()
     if not npc then return end
 
+    -- Prevents broken entities
+    for _, ent in ipairs(self.CHAMPION_FILTER) do
+        if npc.Type == ent[1] and npc.Variant == ent[2] then
+            npc:Morph(npc.Type, npc.Variant, npc.SubType, 0)
+            return
+        end
+    end
+
     -- Get rid of entities attached to the original NPC
     for _, ref in ipairs(Isaac.GetRoomEntities()) do
         -- Remove parents
@@ -128,7 +136,7 @@ function ChampionOverhaul:SetChampion(entity, id)
     local stageScale = game:GetLevel():GetAbsoluteStage() < LevelStage.STAGE4_1 and 0 or math.min(data.damage, 2)
     npc.CollisionDamage = data.damage + stageScale
 
-    --[[ Champion features ]]--
+    -- Champion features --
 
     -- Save ref by name
     npc:GetData().co_champion_name = data.name
@@ -291,10 +299,13 @@ function ChampionOverhaul:SetChampionColor(entity)
         local xmlData = XMLData.GetBossColorByTypeVarSub(npc.Type, npc.Variant, npc.SubType)
 
         if xmlData then
+            local keepColor = true
+
             -- Try suffix first
             if xmlData.suffix then
                 local suffix = xmlData.suffix:match("_([^_]+)$")
                 if suffix and self.BOSS_COLOR[suffix] then
+                    keepColor = false
                     color = self.BOSS_COLOR[suffix]
                     intensity = true
                 end
@@ -304,10 +315,14 @@ function ChampionOverhaul:SetChampionColor(entity)
             if not color and xmlData.anm2path then
                 local suffix = xmlData.anm2path:match("_([^_]+)%.anm2$")
                 if suffix and self.BOSS_COLOR[suffix] then
+                    keepColor = false
                     color = self.BOSS_COLOR[suffix]
                     intensity = true
                 end
             end
+
+            -- Ignores color changes
+            if keepColor then return end
         end
     end
 
@@ -475,12 +490,11 @@ end
 ---@param scale? Vector
 ---@param rotation? number
 function ChampionOverhaul:SpawnParticle(spritePath, velocity, position, offset, scale, rotation)
-    local particle = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.EFFECT_NULL, 0, position, velocity, nil)
-    particle:GetData().co_champion_particle = true
+    local particle = Isaac.Spawn(EntityType.ENTITY_EFFECT, self.CHAMPION_PARTICLE, 0, position, velocity, nil)
 
     local sprite = particle:GetSprite()
     sprite:Load("gfx/champion_particle.anm2", true)
-    sprite:Play("Idle", true)
+    sprite:Play("Idle")
     sprite:ReplaceSpritesheet(0, spritePath, true)
 
     particle.SpriteOffset = offset or Vector(0,0)

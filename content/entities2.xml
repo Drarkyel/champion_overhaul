@@ -1,0 +1,18 @@
+<entities anm2root="gfx/" version="5">
+    <!-- Champion Particle -->
+    <entity anm2path="champion_particle.anm2" name="Champion Particle" id="1000" variant="2660" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+    <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <!-- Pink Familiar -->
+    <entity anm2path="../scripts/champions/pink/pink_familiar.anm2" name="Pink Familiar" id="1000" variant="2661" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+    <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <!-- Ivory Mark -->
+    <entity anm2path="../scripts/champions/ivory/beam_mark.anm2" name="Ivory Mark" id="1000" variant="2662" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+    <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+    <!-- Pearl Mark -->
+    <entity anm2path="../scripts/champions/pearl/mark.anm2" name="Pearl Mark" id="1000" variant="2663" baseHP="0" boss="0" champion="0" collisionDamage="0" collisionMass="0" collisionRadius="0" friction="1" numGridCollisionPoints="0" shadowSize="0" stageHP="0">
+    <gibs amount="0" blood="0" bone="0" eye="0" gut="0" large="0"/>
+    </entity>
+</entities>

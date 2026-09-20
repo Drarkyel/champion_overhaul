@@ -35,7 +35,7 @@ function mod:IvoryDeath(npc)
 
         sound:Play(SoundEffect.SOUND_BLACK_POOF, 0.5, 2, false, 1.5)
 
-        local target = Isaac.Spawn(EntityType.ENTITY_EFFECT, EffectVariant.EFFECT_NULL, 0, pos, Vector.Zero, nil):ToEffect()
+        local target = Isaac.Spawn(EntityType.ENTITY_EFFECT, self.IVORY_MARK, 0, pos, Vector.Zero, nil):ToEffect()
         ---@cast target EntityEffect
         target:GetData().co_champion_ivory_markDMG = npc.CollisionDamage
         target:GetSprite():Load("../scripts/champions/ivory/beam_mark.anm2", true)
@@ -50,8 +50,6 @@ mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, mod.IvoryDeath)
 -- Beam mark
 ---@param effect EntityEffect
 function mod:IvoryMark(effect)
-	if not effect:GetData().co_champion_ivory_markDMG then return end
-
     -- Close doors
 	for i = 0, DoorSlot.NUM_DOOR_SLOTS - 1 do
 		local door = game:GetRoom():GetDoor(i)
@@ -68,4 +66,4 @@ function mod:IvoryMark(effect)
         effect:Remove()
 	end
 end
-mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, mod.IvoryMark, EffectVariant.EFFECT_NULL)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, mod.IvoryMark, mod.IVORY_MARK)

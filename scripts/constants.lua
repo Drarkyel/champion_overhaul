@@ -28,6 +28,12 @@ ChampionOverhaul.ChampionData = {}
 ---@type table<string, integer>
 ChampionOverhaul.ChampionID = {}
 
+-- Effect variants
+ChampionOverhaul.CHAMPION_PARTICLE = 2660
+ChampionOverhaul.PINK_FAMILIAR = 2661
+ChampionOverhaul.IVORY_MARK = 2662
+ChampionOverhaul.PEARL_MARK = 2663
+
 -- Color modifiers
 ---@alias ChampionColorModifier
 ---| 0 # Default
@@ -56,6 +62,13 @@ ChampionOverhaul.BOSS_COLOR = {
     pink = Color(1, 0.3, 0.7),
     cyan = Color(0, 0.65, 0.65),
     brown = Color(0.7, 0.4, 0.1)
+}
+
+-- Champion Filter
+ChampionOverhaul.CHAMPION_FILTER = {
+    {114, 5}, -- Floodface (FF)
+    {114, 33}, -- Brisket (FF)
+    {451, 190} -- Contestant (FF)
 }
 
 -- Critters

@@ -13,27 +13,8 @@ ChampionOverhaul:Register({
     drop = "5.40.1" -- Bomb
 })
 
-local EXPLOSION_DAMAGE_PCT = 0.1
 local EXPLOSION_RADIUS = 1.5
-
--- Take less damage from bombs
----@param entity Entity
----@param amount number
----@param flags EntityFlag
----@param source EntityRef
----@param countdown integer
-function mod:DarkCyanExplosionResistance(entity, amount, flags, source, countdown)
-    if not self:GetChampion(entity, CHAMPION) then return end
-    if flags & DamageFlag.DAMAGE_EXPLOSION == 0 then return end
-    if flags & DamageFlag.DAMAGE_CLONES ~= 0 then return end
-
-    local damage = amount * EXPLOSION_DAMAGE_PCT
-    local newFlag = flags | DamageFlag.DAMAGE_CLONES
-    entity:TakeDamage(damage, newFlag, source, countdown)
-
-    return false
-end
-mod:AddCallback(ModCallbacks.MC_ENTITY_TAKE_DMG, mod.DarkCyanExplosionResistance)
+local EXPLOSION_DAMAGE = 100
 
 -- Explodes upon death
 ---@param npc EntityNPC
@@ -42,6 +23,7 @@ function mod:DarkCyanExplosion(npc)
 
     game:ShakeScreen(10)
 
+    -- Trigger explosion
     game:BombExplosionEffects(
         npc.Position,
         npc.CollisionDamage, -- Requires damage check
@@ -50,6 +32,18 @@ function mod:DarkCyanExplosion(npc)
         npc,
         EXPLOSION_RADIUS
     )
+
+    -- Deals minor damage to enemies
+    for _, entity in ipairs(Isaac.GetRoomEntities()) do
+        if not entity:IsVulnerableEnemy() then goto continue end
+
+        local distance = entity.Position:Distance(npc.Position)
+        if distance > 60 * EXPLOSION_RADIUS then goto continue end
+
+        entity:TakeDamage(EXPLOSION_DAMAGE, DamageFlag.DAMAGE_EXPLOSION, EntityRef(npc), 0)
+
+        ::continue::
+    end
 end
 mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, mod.DarkCyanExplosion)
 

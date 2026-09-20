@@ -187,10 +187,9 @@ function mod:ChampionDrop(npc)
         return
     end
 
-    local drop_count = math.random(min_drop, max_drop)
-
-    -- Singular drop
-    if drop_count == 1 then
+    local drop_count = math.max(min_drop, npc:GetDropRNG():RandomInt(max_drop) + 1)
+    while drop_count > 0 do
+        drop_count = drop_count - 1
         local pos = Isaac.GetFreeNearPosition(npc.Position, 0)
 
         if type_ ~= 999 then -- Entity
@@ -198,15 +197,6 @@ function mod:ChampionDrop(npc)
         else -- Grid
             Isaac.GridSpawn(variant, subtype, pos)
         end
-
-        return
-    end
-
-    -- Multiple drops
-    for _ = min_drop, max_drop do
-        local velocity = EntityPickup.GetRandomPickupVelocity(npc.Position, nil, 0)
-
-        Isaac.Spawn(type_, variant, subtype, npc.Position, velocity, npc)
     end
 end
 mod:AddCallback(ModCallbacks.MC_POST_NPC_DEATH, mod.ChampionDrop)

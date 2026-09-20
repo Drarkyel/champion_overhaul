@@ -1,5 +1,6 @@
 --[[ Light ]]--
 local mod = ChampionOverhaul
+local sound = SFXManager()
 
 local CHAMPION = "light"
 
@@ -14,8 +15,9 @@ ChampionOverhaul:Register({
 
 -- Projectiles aim at player
 ---@param entity Entity
+---@param amount number
 ---@param source EntityRef
-function mod:LightRemoveEnergy(entity, _, _, source)
+function mod:LightRemoveEnergy(entity, amount, _, source)
     if not self:HasChampionSource(source.Entity, CHAMPION) then return end
 
     local player = entity:ToPlayer()
@@ -26,13 +28,15 @@ function mod:LightRemoveEnergy(entity, _, _, source)
 
     if not (firstSlot or secondSlot) then return end
 
+    sound:Play(SoundEffect.SOUND_BATTERYDISCHARGE)
+
     -- Discharge
     if firstSlot then
         -- Primary active item
-        player:DischargeActiveItem(ActiveSlot.SLOT_PRIMARY)
+        player:AddActiveCharge(-amount, ActiveSlot.SLOT_PRIMARY)
     else
         -- Secondary active item
-        player:DischargeActiveItem(ActiveSlot.SLOT_SECONDARY)
+        player:AddActiveCharge(-amount, ActiveSlot.SLOT_SECONDARY)
     end
 
     -- Battery effect

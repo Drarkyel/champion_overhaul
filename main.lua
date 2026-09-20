@@ -1,7 +1,7 @@
 ChampionOverhaul = RegisterMod("Champion Overhaul", 1)
 local mod = ChampionOverhaul
 
-mod.Version = "v1.0"
+mod.Version = "v1.1"
 
 -- Repentogon
 if not REPENTOGON then

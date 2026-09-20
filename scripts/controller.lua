@@ -93,6 +93,8 @@ function mod:ChampionEffect(effect)
             effect:GetData().co_champion_boss = true
             effect:GetData().co_champion_damage = bossChampion.CollisionDamage
         end
+
+        effect:Update()
     end
 
     local invalid = effect.IsFollowing or self:IsCritter(effect)
@@ -152,9 +154,8 @@ mod:AddCallback(ModCallbacks.MC_POST_LASER_INIT, mod.ChampionLaser)
 -- Particles
 ---@param effect EntityEffect
 function mod:ChampionParticle(effect)
-    if not effect:GetData().co_champion_particle then return end
-
     if not effect:GetSprite():IsFinished("Idle") then return end
+
     effect:Remove()
 end
-mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, mod.ChampionParticle, EffectVariant.EFFECT_NULL)
+mod:AddCallback(ModCallbacks.MC_POST_EFFECT_UPDATE, mod.ChampionParticle, mod.CHAMPION_PARTICLE)
